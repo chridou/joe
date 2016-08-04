@@ -3,8 +3,17 @@ name = "joe"
 version = "0.1.0"
 authors = ["chridou <chridou@users.noreply.github.com>"]
 
+[lib]
+name = "joe"
+path = "src/lib.rs"
+
+[[bin]]
+name = "joe"
+path = "src/bin.rs"
+
 [dependencies]
-diesel = "0.6.1"
-diesel_codegen = { version = "0.6.1", default-features = false, features = ["nightly", "postgres"] }
-dotenv = "0.8.0"
-dotenv_macros = "0.8.0"
+log = "0.3"
+diesel = "0.7"
+diesel_codegen = { version = "0.7", default-features = false, features = ["postgres"] }
+dotenv = "0.8"
+dotenv_macros = "0.8"
