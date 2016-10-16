@@ -2,6 +2,7 @@
 name = "joe"
 version = "0.1.0"
 authors = ["chridou <chridou@users.noreply.github.com>"]
+build = "build.rs"
 
 [lib]
 name = "joe"
@@ -11,9 +12,22 @@ path = "src/lib.rs"
 name = "joe"
 path = "src/bin.rs"
 
+[build-dependencies]
+syntex = { version = "0.44.0", optional = true }
+diesel_codegen_syntex = { version = "0.8.0", features = ["postgres"], optional = true }
+serde_codegen = { version = "0.8", optional = true }
+
 [dependencies]
-log = "0.3"
-diesel = "0.7"
-diesel_codegen = { version = "0.7", default-features = false, features = ["postgres"] }
-dotenv = "0.8"
-dotenv_macros = "0.8"
+diesel = "0.8.0"
+diesel_codegen = { version = "0.8.0", features = ["postgres"], optional = true }
+dotenv = "0.8.0"
+serde = "0.8"
+serde_derive = { version = "0.8", optional = true }
+serde_json = "0.8"
+
+uuid = {version = "*", features = ["v4", "serde"] }
+
+[features]
+default = ["nightly"]
+with-syntex = ["syntex", "diesel_codegen_syntex", "serde_codegen"]
+nightly = ["diesel/unstable", "diesel_codegen", "serde_derive"]
