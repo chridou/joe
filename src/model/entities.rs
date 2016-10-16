@@ -18,3 +18,15 @@ pub struct Customer {
     address_city: Option<String>,
     address_country: Option<String>,
 }
+
+#[derive(Debug, Serialize, Deserialize, Queryable)]
+pub struct Trade {
+    id: Uuid,
+    name: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Queryable)]
+pub struct TradePosition {
+    id: Uuid,
+    name: String,
+}
